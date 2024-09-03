@@ -156,7 +156,7 @@ function compute_extreme_point(
     kwargs...,
 ) where {TL,TD}
     T = promote_type(TD, TL)
-    Z = Arpack.svds(direction, nsv=1, tol=tol, maxiter=2000)[1]
+    Z = Arpack.svds(direction, nsv=1, tol=tol, maxiter=3000)[1]
     u = -lmo.radius * view(Z.U, :)
     return RankOneMatrix(u::Vector{T}, Z.V[:]::Vector{T})
 end
